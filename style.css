@@ -1,0 +1,240 @@
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); /* Adjust opacity here */
+  z-index: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'stolf';
+  src: url('stolf.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'albert';
+  src: url('albertsan.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'albert';
+  background: url('background.webp') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: rgb(0, 0, 0);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 50px; /* Adjust the height of the fade effect */
+  background: linear-gradient(to bottom, rgba(240, 229, 229, 1) 25%, rgba(240, 229, 229, 0) 100%);
+  z-index: 2; /* Make sure it's above the content but below the nav */
+  pointer-events: none; /* Allow clicks to go through */
+}
+
+/* VERY HIGH z-index and fixed positioning for nav and popup to always be on top */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9999; /* Make sure it's very high */
+  background-color: #1F1F28;
+  padding: 10px 20px;
+  border-radius: 0;
+}
+
+.top-nav button {
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 0px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.page-buttons button {
+  margin-right: 4px;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(240, 229, 229);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  width: 220px;
+  border-radius: 6px;
+  z-index: 999;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: opacity 0.2s ease;
+}
+
+
+.popup ul {
+  list-style: none;
+}
+
+.popup li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+}
+
+.popup li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hidden {
+  display: none;
+}
+
+/* CONTENT AREA */
+.content {
+  padding: 60px 20px 20px;
+  max-width: 900px;
+  margin-left: 10px; /* so content doesn't cover left nav */
+  position: relative;
+  z-index: 1; /* BELOW nav and popup */
+  pointer-events: auto; /* allow interactions inside content */
+}
+
+.content > * {
+  padding: 10px;
+  /* background-color: rgba(149, 24, 24, 0.6); */
+  border-radius: 8px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+.popup li.selected {
+  background-color:#4E4948;
+  border-radius: 4px;
+  color: gold;
+}
+
+.spacer {
+  height: 15px;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #111;
+  line-height: 1.3;
+  margin: 0.2em;
+}
+
+h1 {
+  font-family: 'stolf', monospace;
+  font-size: 2em;
+  margin-bottom: 0.2em;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0.4em 0 0.8em 0;
+}
+
+i, em {
+  font-style: italic;
+  font-weight: 600;
+}
+
+b, strong {
+  font-weight: 800;
+}
+
+b em, em b, strong em, em strong {
+  font-style: italic;
+  font-weight: 800;
+}
+
+.role-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.role-title {
+  font-weight: 800;
+}
+
+.role-info {
+  font-size: 0.9em;
+  margin-top: 0.2em;
+}
+
+img.icon {
+  height: 4em;
+  aspect-ratio: 1 / 1;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+img.responsive {
+    width: 100%;
+    height: auto;
+    max-width: 900px; /* Optional: limits how large it can get */
+  }
+
+ul {
+  list-style-type: "- "; /* mimics your dash */
+  padding-left: 1em;
+}
+li {
+  margin-bottom: 0.5em;
+}
